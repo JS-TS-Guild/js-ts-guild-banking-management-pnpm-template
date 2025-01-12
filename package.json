@@ -5,14 +5,15 @@
   "main": "index.ts",
   "scripts": {
     "test": "vitest",
-    "test-run-first": "vitest run simple.test.ts",
-    "test-run-second": "vitest run real.test.ts"
+    "test-run-basic": "vitest run simple.test.ts",
+    "test-run-real": "vitest run real.test.ts"
   },
   "type": "module",
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/node": "^22.10.5",
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^2.1.8"
   }
