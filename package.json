@@ -13,7 +13,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "vite-tsconfig-paths": "^5.0.1",
-    "vitest": "^2.1.0"
+    "vite-tsconfig-paths": "^5.1.4",
+    "vitest": "^2.1.8"
   }
 }
