@@ -13,30 +13,46 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-    - name: Install packages
+    - name: Install pnpm
       run: npm install -g pnpm
-    - name: Test - 2 points
+    - name: Install dependencies
+      run: pnpm i
+    - name: Run Test - 2 points
       id: test-2-points
       uses: classroom-resources/autograding-command-grader@v1
       with:
         test-name: Test - 2 points
-        setup-command: pnpm i
-        command: pnpm test-run-first
+        command: pnpm test-run-basic
         timeout: 1
         max-score: 2
-    - name: Test - 7 points
+    - name: Run Test - 7 points
       id: test-7-points
       uses: classroom-resources/autograding-command-grader@v1
       with:
         test-name: Test - 7 points
-        setup-command: pnpm i
-        command: pnpm test-run-second
+        command: pnpm test-run-real
         timeout: 1
         max-score: 7
+    - name: Check TESTS_FOLDER
+      env:
+        TESTS_FOLDER: ${{ secrets.TESTS_FOLDER }}
+      if: ${{ env.TESTS_FOLDER != '' }}
+      run: echo "TESTS_FOLDER is set ${{ env.TESTS_FOLDER }}"
+    - name: Run Test - Final 24 points
+      id: test-24-points
+      uses: classroom-resources/autograding-command-grader@v1
+      env:
+        TESTS_FOLDER: "${{ secrets.TESTS_FOLDER }}"
+      with:
+        test-name: Test - 24 points
+        command: TESTS_FOLDER=${{ secrets.TESTS_FOLDER }} pnpm test-run-final
+        timeout: 1
+        max-score: 24
     - name: Autograding Reporter
       uses: classroom-resources/autograding-grading-reporter@v1
       env:
-        TEST-2-POINTS_RESULTS: "${{steps.test-2-points.outputs.result}}"
-        TEST-7-POINTS_RESULTS: "${{steps.test-7-points.outputs.result}}"
+        TEST-2-POINTS_RESULTS: "${{ steps.test-2-points.outputs.result }}"
+        TEST-7-POINTS_RESULTS: "${{ steps.test-7-points.outputs.result }}"
+        TEST-24-POINTS_RESULTS: "${{ steps.test-24-points.outputs.result }}"
       with:
-        runners: test-2-points,test-7-points
+        runners: test-2-points,test-7-points,test-24-points
