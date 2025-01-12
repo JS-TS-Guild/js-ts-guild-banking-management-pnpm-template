@@ -42,7 +42,7 @@ export class TestFactory {
     };
   }
 
-  static createBank(options?: { isNegativeAllowed?: boolean }): Bank {
+  static createBank(options: { isNegativeAllowed: boolean }): Bank {
     return Bank.create(options);
   }
 
