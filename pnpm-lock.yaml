@@ -7,12 +7,16 @@ settings:
 importers:
 
   .:
+    dependencies:
+      uuid:
+        specifier: ^11.0.5
+        version: 11.0.5
     devDependencies:
       vite-tsconfig-paths:
-        specifier: ^5.1.4
+        specifier: ^5.0.1
         version: 5.1.4(vite@5.4.11)
       vitest:
-        specifier: ^2.1.8
+        specifier: ^2.1.0
         version: 2.1.8
 
 packages:
@@ -411,6 +415,10 @@ packages:
       typescript:
         optional: true
 
+  uuid@11.0.5:
+    resolution: {integrity: sha512-508e6IcKLrhxKdBbcA2b4KQZlLVp2+J5UwQ6F7Drckkc5N9ZJwFa4TgWtsww9UG8fGHbm6gbV19TdM5pQ4GaIA==}
+    hasBin: true
+
   vite-node@2.1.8:
     resolution: {integrity: sha512-uPAwSr57kYjAUux+8E2j0q0Fxpn8M9VoyfGiRI8Kfktz9NcYMCenwY5RnZxnF1WTu3TGiYipirIzacLL3VVGFg==}
     engines: {node: ^18.0.0 || >=20.0.0}
@@ -782,6 +790,8 @@ snapshots:
   tinyspy@3.0.2: {}
 
   tsconfck@3.1.4: {}
+
+  uuid@11.0.5: {}
 
   vite-node@2.1.8:
     dependencies:
