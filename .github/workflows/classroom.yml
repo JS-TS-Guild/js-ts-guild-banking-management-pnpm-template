@@ -1,0 +1,42 @@
+name: Autograding Tests
+'on':
+- push
+- repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Install packages
+      run: npm install -g pnpm
+    - name: Test - 2 points
+      id: test-2-points
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Test - 2 points
+        setup-command: pnpm i
+        command: pnpm test-run-first
+        timeout: 1
+        max-score: 2
+    - name: Test - 7 points
+      id: test-7-points
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Test - 7 points
+        setup-command: pnpm i
+        command: pnpm test-run-second
+        timeout: 1
+        max-score: 7
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        TEST-2-POINTS_RESULTS: "${{steps.test-2-points.outputs.result}}"
+        TEST-7-POINTS_RESULTS: "${{steps.test-7-points.outputs.result}}"
+      with:
+        runners: test-2-points,test-7-points

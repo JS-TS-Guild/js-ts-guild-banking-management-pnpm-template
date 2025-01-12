@@ -1,0 +1,19 @@
+{
+  "name": "pnpm-template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "test": "vitest",
+    "test-run-first": "vitest run simple.test.ts",
+    "test-run-second": "vitest run real.test.ts"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "vite-tsconfig-paths": "^5.0.1",
+    "vitest": "^2.1.0"
+  }
+}
