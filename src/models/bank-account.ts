@@ -22,4 +22,13 @@ export default class BankAccount {
     getBalance(){
         return this.balance;
     }
+
+    deposit(amount: number) {
+        this.balance += amount;
+    }
+
+    withdraw(amount: number) {
+
+            this.balance -= amount;
+    }
 }
