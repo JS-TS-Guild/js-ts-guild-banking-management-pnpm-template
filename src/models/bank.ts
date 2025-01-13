@@ -57,9 +57,9 @@ export default class Bank {
         }
     }
 
+    // WIP: This is still in WIP and not complete
     send(senderId: string, receiverId: string, amount: number){
         let accountFound = false;
-        let senderAccount: BankAccount;
         let customerAccounts = [];
 
         for(let i = 0; i < this.customerIds.length; i++){
@@ -72,7 +72,7 @@ export default class Bank {
         if(accountFound){
             for(let i = 0; i < this.bankAccounts.length; i++){
                 if(this.bankAccounts[i].getId() == senderId){
-                    senderAccount = this.bankAccounts[i]
+                    
                 }
             }
         }
