@@ -1,19 +1,25 @@
-import { BankAccountId } from "@/types/Common";
+import { idGenerator } from "@/utils/idgen"
 
 export default class BankAccount {
-    id:string
-    private balance:number
+    private id: string
+    private bankId: string
+    private balance: number
 
-    constructor(initialBalance: number){
-        this.balance = initialBalance
-        this.id = this.generateId();
+    constructor(initialBalance: number, bankId: string){
+        this.id = idGenerator();
+        this.bankId = bankId;
+        this.balance = initialBalance;
     }
 
-    private generateId(): BankAccountId {
-        return Math.random().toString(36).substr(2, 9);
-    }
-    
-    getId(): BankAccountId {
+    getId(){
         return this.id;
+    }
+
+    getBankId(){
+        return this.bankId;
+    }
+
+    getBalance(){
+        return this.balance;
     }
 }

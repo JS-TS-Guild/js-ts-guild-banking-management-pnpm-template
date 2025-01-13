@@ -1,29 +1,21 @@
-import { UserId, BankAccountId } from '@/types/Common';
+import { idGenerator } from "@/utils/idgen";
 
 export default class User {
-  private id: UserId;
-  private name: string;
-  private accountIds: BankAccountId[];
+  private userName: string;
+  private bankAccounts: string[];
+  private userId: string;
 
-  constructor(name: string, accountIds: BankAccountId[]) {
-    this.id = this.generateId();
-    this.name = name;
-    this.accountIds = accountIds;
+  constructor(username: string, bankAccounts: string[]){
+    this.userName = username;
+    this.bankAccounts = [...bankAccounts];
+    this.userId = idGenerator();
   }
 
-  static create(name: string, accountIds: BankAccountId[]): User {
-    return new User(name, accountIds);
+  static create(userName: string, bankAccounts: string[]): User{
+    return new User(userName, bankAccounts)
   }
 
-  private generateId(): UserId {
-    return Math.random().toString(36).substr(2, 9);
-  }
-
-  getId(): UserId {
-    return this.id;
-  }
-
-  getAccountIds(): BankAccountId[] {
-    return this.accountIds;
+  getId(){
+    return this.userId;
   }
 }
