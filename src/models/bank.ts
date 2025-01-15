@@ -52,7 +52,6 @@ export default class Bank {
         }
     }
 
-    // WIP: This is still in WIP and not complete
     send(senderUserId: string, receiverUserId: string, amount: number, receiverBankId?: string){
         let allBanks = GlobalRegistry.getBanks();
         let transactionStatus:boolean;
