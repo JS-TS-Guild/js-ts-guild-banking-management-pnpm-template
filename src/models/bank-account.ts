@@ -1,3 +1,4 @@
+import GlobalRegistry from "@/services/GlobalRegistry";
 import { idGenerator } from "@/utils/idgen"
 
 export default class BankAccount {
@@ -21,5 +22,13 @@ export default class BankAccount {
 
     getBalance(){
         return this.balance;
+    }
+
+    credit(amount: number){
+        this.balance += amount;
+    }
+
+    debit(amount: number){
+        this.balance -= amount
     }
 }
