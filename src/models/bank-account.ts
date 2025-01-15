@@ -30,5 +30,6 @@ export default class BankAccount {
 
     debit(amount: number){
         this.balance -= amount
+
     }
 }
